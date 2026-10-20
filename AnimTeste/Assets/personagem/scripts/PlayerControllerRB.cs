@@ -21,7 +21,7 @@ public class PlayerControllerRB : MonoBehaviour
     private InputAction jumpInput;
     private InputAction lookInput;
 
-    private  Camera mainCamera;
+    private Camera mainCamera;
     [SerializeField] private float LookSens = 0.2f;
     [SerializeField] private float LookAngLimit = 90f;
     private float lookAngle = 0.0f;
