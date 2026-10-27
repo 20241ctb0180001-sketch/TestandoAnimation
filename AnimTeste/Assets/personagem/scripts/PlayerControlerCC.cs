@@ -14,6 +14,7 @@ public class PlayerControlerCC : MonoBehaviour
     [SerializeField] private float JumpForce = 8.0f;
     [SerializeField] private float Gravity = 20f;
     [SerializeField] private float rotationSmoothness = 10f;
+    [SerializeField] private float speedSmoothness = 10f; //
     private float CurMoveSpeed = 0.0f;
     private float verticalVel = 0f;
 
@@ -75,7 +76,10 @@ public class PlayerControlerCC : MonoBehaviour
         if (CC.isGrounded)
         {
             Isgrounded = true;
-            speed = runInput.IsPressed() ? moveVec.magnitude * RunningSpeed : moveVec.magnitude * WalkSpeed;
+
+            //speed = runInput.IsPressed() ? moveVec.magnitude * RunningSpeed : moveVec.magnitude * WalkSpeed;
+            float targetSpeed = runInput.IsPressed() ? moveVec.magnitude * RunningSpeed : moveVec.magnitude * WalkSpeed;
+            speed = Mathf.MoveTowards(speed, targetSpeed, speedSmoothness * Time.deltaTime);
             
             if (jumpInput.WasPressedThisFrame())
             {
@@ -91,7 +95,8 @@ public class PlayerControlerCC : MonoBehaviour
         else
         {
             Isgrounded = false;
-            speed = Mathf.MoveTowards(speed, 0f, 10f * Time.deltaTime);
+            //speed = Mathf.MoveTowards(speed, 0f, 10f * Time.deltaTime);
+            speed = Mathf.MoveTowards(speed, 0f, speedSmoothness * Time.deltaTime);
             verticalVel -= Gravity * Time.deltaTime;
         }
         moveDirection.y = verticalVel;
