@@ -5,9 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerPrimeiraPessoa.unity
     guid: 651345af99861ec4abdbd9ce4eafed24
+  - enabled: 1
+    path: Assets/Scenes/PlayerPrimeiraPessoaVR.unity
+    guid: 06296f728728ac741ac18a5cccade723
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f61f19bced8058c49bd8363a09dc8baf, type: 2}
   m_UseUCBPForAssetBundles: 0

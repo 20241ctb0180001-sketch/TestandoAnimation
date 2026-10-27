@@ -1,8 +1,8 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerControllerRB : MonoBehaviour
 {
     [SerializeField] private float WalkSpeed = 5.5f;
@@ -47,8 +47,9 @@ public class PlayerControllerRB : MonoBehaviour
     void Update()
     {
         moveVector = moveInput.ReadValue<Vector2>();
+        
         CurrMovespeed = runInput.IsPressed() ? RunningSpeed : WalkSpeed;
-        if (jumpInput.WasPerformedThisFrame())
+        if (jumpInput.WasPressedThisFrame())
         {
             JumpRequest = true;
         }

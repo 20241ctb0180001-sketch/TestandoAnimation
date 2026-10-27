@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!143 &1304889224
 CharacterController:
   m_ObjectHideFlags: 0
@@ -505,6 +505,7 @@ MonoBehaviour:
   JumpForce: 8
   Gravity: 20
   rotationSmoothness: 10
+  speedSmoothness: 20
   mainCamera: {fileID: 0}
   LookSens: 0.2
   LookAngLimit: 90
@@ -561,7 +562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1636298056
 Transform:
   m_ObjectHideFlags: 0
