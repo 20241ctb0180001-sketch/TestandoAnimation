@@ -29,7 +29,8 @@ public class PlayerControlerCC : MonoBehaviour
     private InputAction lookinput;
 
     private float speed;
-    private bool isJumping;
+    private bool JumpRequest;
+    private bool Isgrounded;
 
     void Start()
     {
@@ -73,29 +74,31 @@ public class PlayerControlerCC : MonoBehaviour
 
         if (CC.isGrounded)
         {
+            Isgrounded = true;
             speed = runInput.IsPressed() ? moveVec.magnitude * RunningSpeed : moveVec.magnitude * WalkSpeed;
             
             if (jumpInput.WasPressedThisFrame())
             {
+                JumpRequest = true;
                 verticalVel = JumpForce;
-                isJumping = true;
             }
             else
             {
-                isJumping = false;
                 verticalVel = -2f;
             }
+            JumpRequest = false;
         }
         else
         {
-            isJumping = false;
+            Isgrounded = false;
             speed = Mathf.MoveTowards(speed, 0f, 10f * Time.deltaTime);
             verticalVel -= Gravity * Time.deltaTime;
         }
         moveDirection.y = verticalVel;
         CC.Move(moveDirection * Time.deltaTime);
         anim.SetFloat("Speed", speed);
-        anim.SetBool("jumpact", isJumping);
+        anim.SetBool("isGrounded", Isgrounded);
+        anim.SetBool("JumpRq", JumpRequest);
     }
 
     private void HandleCam(Vector2 lookVec)
